@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f8ff;
+    margin: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.game-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 20px;
+}
+
+#game-board {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap-reverse; /* This makes 1-10 appear on the bottom row */
+    border: 2px solid #333;
+    box-sizing: border-box;
+}
+
+.cell {
+    width: 10%; /* 10 cells per row */
+    height: 10%; /* 10 cells per column */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Color every other row for a checkerboard effect */
+.cell:nth-child(-n+10):nth-child(even),
+.cell:nth-child(n+11):nth-child(-n+20):nth-child(odd),
+.cell:nth-child(n+21):nth-child(-n+30):nth-child(even),
+.cell:nth-child(n+31):nth-child(-n+40):nth-child(odd),
+.cell:nth-child(n+41):nth-child(-n+50):nth-child(even),
+.cell:nth-child(n+51):nth-child(-n+60):nth-child(odd),
+.cell:nth-child(n+61):nth-child(-n+70):nth-child(even),
+.cell:nth-child(n+71):nth-child(-n+80):nth-child(odd),
+.cell:nth-child(n+81):nth-child(-n+90):nth-child(even),
+.cell:nth-child(n+91):nth-child(-n+100):nth-child(odd) {
+    background-color: #e0f0e0;
+}
+
+.snake, .ladder {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 2px;
+    border-radius: 4px;
+    color: white;
+}
+
+.snake {
+    background-color: #d9534f; /* Red */
+}
+
+.ladder {
+    background-color: #5cb85c; /* Green */
+}
+
+#player {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #0275d8;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: all 0.5s ease-in-out;
+    z-index: 10;
+    /* Position will be set by JavaScript */
+    bottom: 10px;
+    left: 10px;
+}
+
+.controls {
+    text-align: center;
+}
+
+#roll-button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#roll-button:disabled {
+    background-color: #ccc;
+}
+
+#dice-result {
+    font-size: 1.5em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#game-message {
+    font-size: 1.2em;
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 10px;
+    height: 20px;
+}
